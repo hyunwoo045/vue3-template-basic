@@ -172,3 +172,31 @@ Command + Shift + P
 
 위 속성 입력
 ```
+
+# vue-style-loader 적용 안되는 이슈
+
+webpack.config.js 파일 내에 module 에서 css 파일에 대해 vue-style-loader 를 사용할 시 에러가 발생합니다.
+
+```
+Uncaught TypeError: Cannot read property 'locals' of undefined
+    at eval (App.vue?./node_modules/vue-style-loader/index.js!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[6].use[0]:7)
+    at Object../node_modules/vue-style-loader/index.js!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[6].use[0]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&scoped=true&lang=css (main.js:572)
+    at __webpack_require__ (main.js:612)
+    at fn (main.js:823)
+    at eval (VM2330 App.vue:2)
+    at Module../src/App.vue?vue&type=style&index=0&id=7ba5bd90&scoped=true&lang=css (main.js:562)
+    at __webpack_require__ (main.js:612)
+    at fn (main.js:823)
+    at eval (VM2330 App.vue:4)
+    at Module../src/App.vue (main.js:529)
+```
+
+vue-style-loader 를 제외하면 정상적으로 동작하는 것을 확인하였습니다.
+
+<br/>
+
+https://github.com/vuejs/vue-style-loader/issues/56
+
+vue-loader@next 에서 더 이상 vue-style-loader 를 사용하지 않고 style-loader 만을 사용한다는 것으로 파악됩니다. (21.07.20 기준)
+
+<br/><br/>
