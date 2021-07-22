@@ -36,13 +36,7 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: [
-          "vue-style-loader",
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ], // 순서 중요함
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"], // 순서 중요함
       },
       {
         test: /\.js$/,
